@@ -9,7 +9,7 @@ public class Skeleton : MonoBehaviour
     public float moveSpeed = 500f;
     public CircleCollider2D triggerCollider;
     public IDamageable damageableObject;
-
+    public Rigidbody2D playerRigidbody;
     
     public DetectionZone detectionZone;
     Rigidbody2D rb;
@@ -31,6 +31,10 @@ public class Skeleton : MonoBehaviour
 
     void Update() {
         float currentHealth = damageableObject.Health;
+        RaycastHit2D hit = Physics2D.Raycast(playerRigidbody.position, playerRigidbody.velocity, 0.5f);
+        if (hit.collider != null && hit.collider.gameObject.layer == LayerMask.NameToLayer("GroundCollision")) {
+            playerRigidbody.AddForce(-hit.normal * knockbackForce, ForceMode2D.Impulse);
+        }
     if (currentHealth <= 0) {
         OnDeath();
     }
