@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -3491810389785495187}
   - component: {fileID: 2670085439432989188}
   - component: {fileID: -5591809899986050535}
+  - component: {fileID: 7826016680014196914}
   m_Layer: 0
   m_Name: woodenPlank
   m_TagString: Untagged
@@ -75,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: f8a9cfc721a20ce409c3d743e9b251bc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -99,9 +100,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18dc65ccb9eeac04ca5c5664168e4bd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 2
-  icon: {fileID: 21300000, guid: f8a9cfc721a20ce409c3d743e9b251bc, type: 3}
-  rb2d: {fileID: 0}
 --- !u!61 &2670085439432989188
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -149,3 +147,17 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &7826016680014196914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7162859625511207868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a82b886f9c8287e4aa6e1dbb60a0e8d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: c1171560b11406644b126270975fbe67, type: 2}
+  rb2d: {fileID: 0}

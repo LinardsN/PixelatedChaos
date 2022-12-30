@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2080193412526774040}
   - component: {fileID: 7615599955458516046}
   - component: {fileID: 100158290074146007}
+  - component: {fileID: 4753135829042265382}
   m_Layer: 0
   m_Name: woodenLog
   m_TagString: Untagged
@@ -125,9 +126,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18dc65ccb9eeac04ca5c5664168e4bd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 1
-  icon: {fileID: 21300000, guid: 0e1ccb64303778e4081913a6d9cca677, type: 3}
-  rb2d: {fileID: 0}
 --- !u!50 &100158290074146007
 Rigidbody2D:
   serializedVersion: 4
@@ -149,3 +147,17 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &4753135829042265382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4559700896564250878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a82b886f9c8287e4aa6e1dbb60a0e8d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: 5027900b115fdac4385a83fabefce843, type: 2}
+  rb2d: {fileID: 0}
