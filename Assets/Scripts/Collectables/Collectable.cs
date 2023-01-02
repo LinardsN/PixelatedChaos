@@ -21,7 +21,7 @@ public class Collectable : MonoBehaviour
             // If the item component exists, add it to the player's inventory and destroy the game object
             if (item != null)
             {
-                player.Inventory.Add(item);
+                player.Inventory.Add("Backpack", item);
                 Destroy(this.gameObject);
             }
         }

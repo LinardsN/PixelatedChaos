@@ -23,10 +23,20 @@ public class Inventory
             maxAllowed = 99;
         }
 
+        public bool IsEmpty {
+            get {
+                if(itemName == "" && count == 0) {
+                    return true;
+                }
+
+                return false;
+            }
+        }
+
         // Method that returns whether this slot can accept more items
-        public bool CanAddItem()
+        public bool CanAddItem(string itemName)
         {
-            if (count < maxAllowed)
+            if (this.itemName == itemName && count < maxAllowed)
             {
                 return true;
             }
@@ -39,6 +49,14 @@ public class Inventory
             this.itemName = item.data.itemName;
             this.icon = item.data.icon;
             count++;
+        }
+
+        public void AddItem(string itemName, Sprite icon, int maxAllowed)
+        {
+            this.itemName = itemName;
+            this.icon = icon;
+            count++;
+            this.maxAllowed = maxAllowed;
         }
 
         // Method that removes an item from this slot
@@ -77,7 +95,7 @@ public class Inventory
         // Check each slot to see if it can accept the item being added
         foreach (Slot slot in slots)
         {
-            if (slot.itemName == item.data.itemName && slot.CanAddItem())
+            if (slot.itemName == item.data.itemName && slot.CanAddItem(item.data.itemName))
             {
                 slot.AddItem(item);
                 return;
@@ -99,5 +117,29 @@ public class Inventory
     public void Remove(int index)
     {
         slots[index].RemoveItem();
+    }
+
+    public void Remove(int index, int numToRemove)
+    {
+        if (slots[index].count >= numToRemove)
+        {
+            for (int i = 0; i < numToRemove; i++)
+            {
+                Remove(index);
+            }
+        }
+    }
+
+    public void MoveSlot(int fromIndex, int toIndex, Inventory toInventory, int numToMove = 1) {
+        Slot fromSlot = slots[fromIndex];
+        Slot toSlot = toInventory.slots[toIndex];
+
+        if(toSlot.IsEmpty || toSlot.CanAddItem(fromSlot.itemName)) {
+            for(int i = 0; i < numToMove; i++) {
+                toSlot.AddItem(fromSlot.itemName, fromSlot.icon, fromSlot.maxAllowed);
+            fromSlot.RemoveItem();
+            }
+    
+        }
     }
 }

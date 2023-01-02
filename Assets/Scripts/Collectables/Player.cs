@@ -5,13 +5,12 @@ using UnityEngine;
 // Class that represents a player character in the game
 public class Player : MonoBehaviour
 {
-    public Inventory Inventory; // The player's inventory
+    public InventoryManager Inventory;
 
     // Function that is called when the object is created
     private void Awake()
     {
-        // Initialize the inventory with 21 slots
-        Inventory = new Inventory(21);
+       Inventory = GetComponent<InventoryManager>();
     }
 
     // Function that is called once per frame
@@ -46,10 +45,17 @@ public class Player : MonoBehaviour
         Vector3 spawnOffset = new Vector3(randX, randY, 0f).normalized;
 
         // Create a new instance of the item at the calculated spawn location
-        Item droppedItem = Instantiate(item, spawnLocation + spawnOffset, 
-            Quaternion.identity);
+        Item droppedItem = Instantiate(item, spawnLocation + spawnOffset, Quaternion.identity);
 
         // Add force to the item's Rigidbody2D to make it move away from the player
         droppedItem.rb2d.AddForce(spawnOffset * 2f, ForceMode2D.Impulse);
+    }
+
+    public void DropItem(Item item, int numToDrop)
+    {
+        for (int i = 0; i < numToDrop; i++)
+        {
+            DropItem(item);
+        }
     }
 }

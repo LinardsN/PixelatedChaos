@@ -7,6 +7,8 @@ using TMPro; // Required for TextMeshProUGUI class
 // Class that represents the UI for a single inventory slot
 public class Slots_UI : MonoBehaviour
 {
+    public int slotID;
+    public Inventory inventory;
     public Image itemIcon; // Image component for displaying the item's icon
     public TextMeshProUGUI quantityText; // Text component for displaying the item's quantity
     [SerializeField] public GameObject highlight;
