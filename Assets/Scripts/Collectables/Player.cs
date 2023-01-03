@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     // Function that is called when the object is created
     private void Awake()
     {
-       Inventory = GetComponent<InventoryManager>();
+        Inventory = GetComponent<InventoryManager>();
     }
 
     // Function that is called once per frame
@@ -27,6 +27,30 @@ public class Player : MonoBehaviour
             {
                 Debug.Log("Tile is interactable");
                 GameManager.instance.tileManager.SetInteracted(position);
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            // Get a list of all trees within a certain radius of the player
+            Collider2D[] trees = Physics2D.OverlapCircleAll(transform.position, 1.0f);
+
+            // Loop through each tree
+            foreach (Collider2D treeCollider in trees)
+            {
+                // Check if the collider is a box collider
+                if (treeCollider is BoxCollider2D)
+                {
+                    // Get the Tree script component of the tree game object
+                    Tree tree = treeCollider.GetComponent<Tree>();
+
+                    // Check if the tree script component is not null
+                    if (tree != null)
+                    {
+                        // Chop down the tree and instantiate wooden logs
+                        tree.ChopDown(transform.position);
+                    }
+                }
             }
         }
     }
